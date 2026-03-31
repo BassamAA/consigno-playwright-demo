@@ -1,92 +1,50 @@
 # ConsignO Cloud Playwright Demo
 
-This repository contains a Playwright end-to-end test for a critical user flow in ConsignO Cloud.
+Playwright end-to-end automation project for validating a critical business workflow in ConsignO Cloud.
 
-The scenario covers:
+## Overview
+This repository demonstrates practical browser automation against a real application flow, covering login, project creation, document upload, signer assignment, field configuration, signing order setup, launch, and logout.
 
-- signing into the application
-- creating a new project
-- uploading a document
-- adding a signer
-- adding and assigning a text field
-- setting the signing order
-- launching and saving the project
-- logging out at the end of the flow
+## What it demonstrates
+- Playwright-based end-to-end testing
+- Validation of multi-step business workflows
+- Authenticated browser automation
+- Test setup for repeatable execution against a live application flow
 
-## Project Layout
-
-```text
-playwright-test/
-├── auth.setup.spec.ts
-├── create-project.spec.ts
-├── playwright.config.ts
-├── tests/
-│   └── financial_inventory_report-8.pdf
-└── .env.example
-```
+## Workflow covered
+- sign in
+- create a new project
+- upload a document
+- add a signer
+- add and assign a text field
+- configure signing order
+- launch and save the project
+- log out
 
 ## Requirements
-
 - Node.js 18+
 - npm
+- Valid application credentials
 
-## Getting Started
-
-1. Install dependencies:
-
+## Setup
 ```bash
 npm install
-```
-
-2. Install Playwright browsers:
-
-```bash
 npx playwright install
-```
-
-3. Create a local environment file:
-
-```bash
 cp .env.example .env
 ```
 
-4. Fill in `.env` with valid credentials:
+Then fill in `.env` with valid credentials.
 
-```env
-EMAIL=your.email@example.com
-PASSWORD=your-password
-```
-
-## Running the Test
-
-If direct UI login is unreliable for your account, create an authenticated session once:
-
+## Run
 ```bash
 npm run auth
-```
-
-This opens a headed browser. Complete the login manually and wait for the dashboard to load. The session is then saved to `playwright/.auth/user.json`.
-
-Run the full suite:
-
-```bash
 npm run test
 ```
 
-Run only the critical workflow:
+## Tech Stack
+- Playwright
+- Node.js
+- Environment-based test configuration
 
-```bash
-npm run test -- --grep "Create and configure signature project"
-```
-
-Open the Playwright report:
-
-```bash
-npm run report
-```
-
-## Notes
-
-- `.env` is intentionally ignored and should never be committed.
-- `playwright/.auth/` is local session state and is also ignored.
-- The test keeps the selectors account-agnostic where possible, but it is still written against the current ConsignO Cloud UI.
+## Purpose
+This project showcases practical test automation for a business-critical workflow, with emphasis on reliability, repeatability, and realistic end-to-end validation.
